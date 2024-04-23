@@ -181,7 +181,7 @@ def staff_menu_update (car_list, cart_update, login_page):
         cart_update["Type"].append(car_list["Type"][index_car])
         cart_update["Capacity"].append(car_list["Capacity"][index_car])
         cart_update["Stock"].append(car_list["Stock"][index_car])
-        cart_update["Price/day"].append(car_list["Capacity"][index_car])
+        cart_update["Price/day"].append(car_list["Price/day"][index_car])
         print(tabulate(cart_update, headers="keys", tablefmt="rounded_grid"))
         cart_num += 1
 
@@ -225,6 +225,7 @@ def staff_menu_update (car_list, cart_update, login_page):
         except ValueError:
             print("Invalid input! Please enter a valid number for Price.")
     
+    print ('Car successfuly updated!')
     show_car_list(car_list)
 
     while(True): 
@@ -260,7 +261,7 @@ def staff_menu_delete (car_list, cart_update, login_page):
             new_numb = len(car_list['No'])
             car_list['No'] = [i+1 for i in range(new_numb)]
 
-            print('Car deleted successfully!')
+            print('Car successfuly deleted.')
             show_car_list(car_list)
             while(True):
                 del_more = input('Do you want to delete another car? (y/n): ').lower()

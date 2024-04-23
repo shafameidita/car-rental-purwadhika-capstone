@@ -71,8 +71,6 @@ def search_car_list (car_list, cart, login_page):
             continue
 
 
-
-
 def cust_menu_rent(car_list, cart, login_page): 
      total_payment = 0
      show_car_list(car_list)
@@ -139,46 +137,69 @@ def cust_menu_rent(car_list, cart, login_page):
                 elif cart_input == 'n': 
                     while(True): 
                         print(f'The total is {total_payment}' )
-                        user_payment = int(input('Input your payment: '))
-                        change = int(user_payment - total_payment)
-                    
-                        if user_payment >= total_payment:
-                                str_return_money = f'''
-                                    Thank You,
+                        try: 
+                            user_payment = int(input('Input your payment: '))
+                            change = int(user_payment - total_payment)
+                            if user_payment >= total_payment:
+                                    str_return_money = f'''
+                                        Thank You,
 
-                                    Your return is: {change}
-                                '''
-                                print(textwrap.dedent(str_return_money))
-                                final_input = input('Do you want to leave the program? (y/n): ').lower()
-                                if final_input == 'y': 
-                                    exit()
-                                elif final_input == 'n': 
-                                    print('Thank you, you will be directed to the Customer Menu')
-                                    for key in cart.keys():
-                                        cart[key] = []
-                                    customer_menu (car_list, cart, login_page)
-                                else : 
-                                    print('Please enter the correct input, y for yes and n for no.')
+                                        Your return is: {change}
+                                    '''
+                                    print(textwrap.dedent(str_return_money))
+                                    final_input = input('Do you want to leave the program? (y/n): ').lower()
+                                    if final_input == 'y': 
+                                        exit()
+                                    elif final_input == 'n': 
+                                        print('Thank you, you will be directed to the Customer Menu')
+                                        for key in cart.keys():
+                                            cart[key] = []
+                                        customer_menu (car_list, cart, login_page)
+                                    else : 
+                                        print('Please enter the correct input, y for yes and n for no.')
 
-                        else: 
-                            print(f'Not enough, please add more {total_payment - user_payment}')
-                            while(True): 
-                                cancel_rent = input('do you want to cancel your order? (y/n): ').lower()
-                                if cancel_rent == 'y': 
-                                    print('Thank you, you will be directed to the Customer Menu')
-                                    for key in cart.keys():
-                                        cart[key] = []
-                                    customer_menu (car_list, cart)
-                                elif cancel_rent == 'n': 
-                                    break
-                                else: 
-                                    print('Please enter the correct input, y for yes and n for no.')
-                                    continue     
+                            else: 
+                                print(f'Not enough, please add more {total_payment - user_payment}')
+                                while(True): 
+                                    cancel_rent = input('do you want to cancel your order? (y/n): ').lower()
+                                    if cancel_rent == 'y': 
+                                        print('Thank you, you will be directed to the Customer Menu')
 
+                                        # Menghapus mobil yang dibatalkan dari dictionary cart
+                                        while cart["No"]:
+                                            cancelled_car_index = cart["No"].pop()
+                                            cancelled_car_index_in_car_list = car_list["No"].index(cancelled_car_index)
+                                            car_list["Model"].insert(cancelled_car_index_in_car_list, cart["Model"].pop())
+                                            car_list["Type"].insert(cancelled_car_index_in_car_list, cart["Type"].pop())
+                                            car_list["Capacity"].insert(cancelled_car_index_in_car_list, car_list["Capacity"][cancelled_car_index_in_car_list])
+                                            car_list["Stock"].insert(cancelled_car_index_in_car_list, 1)
+                                            car_list["Price/day"].insert(cancelled_car_index_in_car_list, cart["Price/day"].pop())
+
+                                            # Mengembalikan nomor mobil ke urutan semula
+                                            car_list["No"].insert(cancelled_car_index_in_car_list, cancelled_car_index)
+
+                                        cart["Total Day"].clear()
+                                        cart["Total Price"].clear()
+
+                                        # Memperbarui nilai "No" pada car_list
+                                        car_list["No"] = [i + 1 for i in range(len(car_list["No"]))]
+
+                                        customer_menu(car_list, cart, login_page)
+
+                                                                                
+                                    elif cancel_rent == 'n': 
+                                        break
+                                    else: 
+                                        print('Please enter the correct input, y for yes and n for no.')
+                                        continue     
+       
+                        except ValueError:
+                            print("Invalid input! Please input the right payment amount.")
+                            continue
+              
+
+                            
                 else: 
                     print('Wrong answer, please try again.')
                     continue
                 break
-        
-                
-

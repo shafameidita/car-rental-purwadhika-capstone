@@ -1,10 +1,13 @@
 from tabulate import tabulate
+import textwrap 
 
 def staff_menu(car_list, cart_update, login_page) : 
      while(True): 
         try :
             try:
-                print('Welcome to the Staff Menu')
+                str_staff_page = ('''
+                                  Welcome to the Staff Menu''')
+                print(textwrap.dedent(str_staff_page))
                 staff_id = int(input('Please enter your identity number: '))
                 id_num = {123, 456, 789}
             except ValueError:

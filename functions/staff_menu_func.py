@@ -130,7 +130,7 @@ def staff_menu_add (car_list, cart_update, login_page):
                     break
                 elif same_item == 'n':
                     print('Update canceled, you will be directed to Staff Menu.')
-                    login_page ()
+                    staff_menu(car_list, cart_update, login_page) 
                     break
                 else: 
                     print('Incorrect answer, please input y for yes, and n for no.')

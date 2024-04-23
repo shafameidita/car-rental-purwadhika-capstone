@@ -46,8 +46,6 @@ def search_car_list (car_list, cart, login_page):
                     print('Thank you, this is the result : ')    
                     for i in range(len(car_list["Model"])):
                         if car_list["Model"][i].title().strip() == model_to_search:
-                            # for key in car_list:
-                            # row = [car_list[key][i] for key in car_list.keys()]
                             result['No'].append(car_list['No'][i])
                             result['Model'].append(car_list['Model'][i])
                             result['Type'].append(car_list['Type'][i])
@@ -165,7 +163,6 @@ def cust_menu_rent(car_list, cart, login_page):
                                     if cancel_rent == 'y': 
                                         print('Thank you, you will be directed to the Customer Menu')
 
-                                        # Menghapus mobil yang dibatalkan dari dictionary cart
                                         while cart["No"]:
                                             cancelled_car_index = cart["No"].pop()
                                             cancelled_car_index_in_car_list = car_list["No"].index(cancelled_car_index)
@@ -175,13 +172,11 @@ def cust_menu_rent(car_list, cart, login_page):
                                             car_list["Stock"].insert(cancelled_car_index_in_car_list, 1)
                                             car_list["Price/day"].insert(cancelled_car_index_in_car_list, cart["Price/day"].pop())
 
-                                            # Mengembalikan nomor mobil ke urutan semula
                                             car_list["No"].insert(cancelled_car_index_in_car_list, cancelled_car_index)
 
                                         cart["Total Day"].clear()
                                         cart["Total Price"].clear()
 
-                                        # Memperbarui nilai "No" pada car_list
                                         car_list["No"] = [i + 1 for i in range(len(car_list["No"]))]
 
                                         customer_menu(car_list, cart, login_page)

@@ -1,7 +1,7 @@
 # Purwadhika Capstone 1 
 This repository utilizes the Python programming language to develop a program called Car Rental Program for the Capstone Project Module 1 (Python) as part of the Digital Talent Incubator (DTI) learning process by Purwadhika.
 
-This program consists of two main menu, the customer menu and the staff menu. The customer menu includes options to show car data, to rent a car, to return to the login page, and exit the program. On the other hand, the staff menu offers options to show the car data, to add the car data, to update the car data, to delete the car data, to return to the login page, and exit the program. 
+This program consists of two main menu, the customer menu and the staff menu. The customer menu includes options to show car data, rent a car, return to the login page, and exit the program. On the other hand, the staff menu offers options to show the car data, add the car data, update the car data, delete the car data, return to the login page, and exit the program. 
 
 # Data Collection 
 ![Alt Text](https://github.com/shafameidita/car-rental-purwadhika-capstone/blob/main/images/Menu%20Program/1.%20dictionary.jpg)
@@ -31,7 +31,7 @@ This program consists of two main menu, the customer menu and the staff menu. Th
 ### - Add Car Menu
 ![Alt Text](https://github.com/shafameidita/car-rental-purwadhika-capstone/blob/main/images/Menu%20Program/7.%20add%20car_menu.jpg)
 
-### Update Car Menu
+### - Update Car Menu
 ![Alt Text](https://github.com/shafameidita/car-rental-purwadhika-capstone/blob/main/images/Menu%20Program/8.%20update%20car_menu.jpg)
 
 ### - Delete Car Menu

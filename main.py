@@ -1,6 +1,6 @@
 from tabulate import tabulate
-from staff_menu_func import *
-from customer_menu_func import *
+from functions.staff_menu_func import *
+from functions.customer_menu_func import *
 
 
 car_list = {
